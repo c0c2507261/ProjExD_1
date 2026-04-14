@@ -26,7 +26,6 @@ def main():
             if event.type == pg.QUIT:
                 return
 
-        # ↓ ここから全部 while の中（バグ2修正：インデント）
         x = tmr % 3200
         screen.blit(bg_img,      [-x,        0])
         screen.blit(bg_img_flip, [-x + 1600, 0])
@@ -41,6 +40,9 @@ def main():
             kk_rct.move_ip(-1, 0)
         if key_lst[pg.K_RIGHT]:
             kk_rct.move_ip(1, 0)
+
+        if not key_lst[pg.K_LEFT] and not key_lst[pg.K_RIGHT]:
+            kk_rct.move_ip(-1, 0)
 
         screen.blit(kk_img, kk_rct)
 
